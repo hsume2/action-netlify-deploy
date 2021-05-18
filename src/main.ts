@@ -45,7 +45,12 @@ async function run(): Promise<void> {
       fnDir,
       draft: !isProd,
       message,
-      branch: alias
+      branch: alias,
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      statusCb: (statusObj: any) => {
+        /* eslint-disable no-console */
+        console.log(statusObj)
+      }
     })
 
     core.setOutput('deploy-id', deploy.deployId)
